@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<title></title>
+	<meta name="keywords" content="" />
+	<meta name="description" content="" />
+	<link href="../style.css" rel="stylesheet">
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="clearfix">
+			<nav class="main_nav">
+				<ul>
+					<li><a href="../index.html">Главная</a></li>
+					<li><a class="is_active" href="../articles.html">Статьи</a></li>
+					<li><a href="../catalog.html">Каталог</a></li>
+					<li><a href="../galery.html">Галерея изображений</a></li>
+					<li><a href="../registration.html">Регистрация</a></li>
+					<li><a href="../contacts.html">Контакты</a></li>
+				</ul>
+			</nav>
+		</header>
+		<div class="article_content clearfix">
+			<div class="article_header"><h1>ES6: Интерполяция</h1></div>
+			<p>Если вы используете в своей работе Sass, или любой другой CSS-препроцессор, то понятие интерполяции вам уже знакомо:</p>
+
+			<p>// Интерполяция в scss<br>
+			$var: 'awesome';<br>
+			.#{$var}-selector {<br>
+				display: flex;<br>
+			}</p>
+			<p>// CSS код после компиляции<br>
+			.awesome-selector {<br>
+				display: flex;<br>
+			}</p>
+			<p>Интерполяция в JavaScript работает схожим образом. В строке создаётся конструкция ${...}, внутри которой вы можете поместить любую переменную или выражение:<br>
+
+			var age = 25;<br>
+			console.log(`I am ${age} years old`); // I am 25 years old</p>
+			<p>// Эквивалентно<br>
+			console.log('I am ' + age + 'years old'); // I am 25 years old
+			Важно: строки, созданные с помощью обычных кавычек (' и ") не поддерживают интерполяцию. Для поддержки интерполяции следует использовать обратную кавычку ` (клавиша ё на клавиатуре):<br>
+
+			var age = 25;</p>
+			<p>// С обычными кавычками интерполяция не поддерживается<br>
+			console.log('I am ${age} years old'); // I am ${age} years old<br>
+			console.log("I am ${age} years old"); // I am ${age} years old</p>
+			<p>// Поддерживается только с обратными<br>
+			console.log(`I am ${age} years old`); // I am 25 years old</p>
+			<p>Интерполяция выражений<br>
+			С помощью интерполяции в строку можно поместить результат выполнения любого выражения, например, вызов функции:<br>
+
+			const up = (str) => str.toUpperCase();<br>
+			let str = `this is ${ up('sting') } in uppercase`;<br>
+			console.log(str); // this is STRING in uppercase<br>
+			или более сложных выражений:<br>
+
+			const sum = (...args) => `Sum is equal ${args.reduce((start, arg) => start + arg, 0)}`;<br>
+
+			console.log(sum(12, 23, 32)); // Sum is equal 67</p>
+			<p>Вложенная интерполяция<br>
+			Скорее всего, будут возникать ситуации, когда одного уровня интерполяции будет недостаточно. В подобных случаях удобно пользоваться вложенностью (интерполяция внутри интерполяции). Следует помнить, что весь код, находящийся внутри ${...} интерпретируется, как отдельное выражение, то есть может содержать обратные кавычки, которые не будут восприняты, как конец строки:<br>
+
+			const up = (str) => str.toUpperCase();<br>
+			let user = 'user';<br>
+			let str = `these ${up(`${user}s`)} are great`;<br>
+			console.log(str); // these USERS are great</p>
+			<p>В переменной str используется вложенная интерполяция. Используя, старый стандарт код можно переписать следующим образом:<br>
+
+			var user = 'user';<br>
+			var str = 'these ' + up(user + 's') + ' are great';<br>
+			console.log(str); // these USERS are great</p>
+
+		</div>
+		<h3 id="comments">Комментарии:</h3>
+		<div class="comment">
+			<p>Здесь оооооооооооооооооооооооооооооооооооооооооооооооооооооооооооооооооооооооооооооооооооооооооооооооооооочень длинный комментарий</p>
+		</div>
+		<div class="comment">
+			<p>Еще один длинный комментарий о том как здесь всё криво и вообще, лучше бы это статьи вообще не было! В общем масса негативных отзывов и т.д. и т.п. А у нас в квартире газ, это раз! А у нас водопровод, вот! А из нашего окна площадь красная видна. А из нашего окошка только улицу немножко. Спать пора! Уснул бчок, лег в кроватку на бочок. Сонный мишка лег в кровать, только слон не хочет спать. Головой кивает слон, он слонихе шлет поклон</p>
+		</div>
+	</div>
+	<footer class="clearfix">
+		<p>&copy; Все права защищены!</p>
+		<nav class="footer_nav">
+			<ul>
+				<li><a class="is_active" href="../index.html">Главная</a></li>
+				<li><a href="../articles.html">Статьи</a></li>
+				<li><a href="../catalog.html">Каталог</a></li>
+				<li><a href="../galery.html">Галерея изображений</a></li>
+				<li><a href="../registration.html">Регистрация</a></li>
+				<li><a href="../contacts.html">Контакты</a></li>
+			</ul>
+		</nav>
+	</footer>
+
+</body>
+</html>
